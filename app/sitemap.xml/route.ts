@@ -1,6 +1,7 @@
 export async function GET() {
   const urls = [
     "https://kernelize.dev",
+    "https://kernelize.dev/mcp",
     "https://kernelize.dev/ai/mcp",
     "https://kernelize.dev/hono/mcp",
     "https://kernelize.dev/svelte/mcp",
