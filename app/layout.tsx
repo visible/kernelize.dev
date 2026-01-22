@@ -6,6 +6,10 @@ export const metadata: Metadata = {
   title: "kernelize.dev",
   description: "mcp servers for ai development",
   metadataBase: new URL("https://kernelize.dev"),
+  icons: {
+    icon: "/icon",
+    apple: "/apple-icon",
+  },
   keywords: ["mcp", "model context protocol", "ai", "ai sdk", "cursor", "claude", "claude code", "vercel"],
   authors: [{ name: "visible", url: "https://github.com/visible" }],
   creator: "visible",

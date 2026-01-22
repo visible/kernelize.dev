@@ -73,7 +73,7 @@ export function mcppage(config: PageConfig): string {
     <p class="subtitle">${config.description}</p>
 
     <section>
-      <p class="label"><span>&gt;</span> cursor setup?</p>
+      <p class="label"><span>&gt;</span> cursor?</p>
       <pre>{
   "mcpServers": {
     "${config.name}": {
@@ -84,8 +84,36 @@ export function mcppage(config: PageConfig): string {
     </section>
 
     <section>
-      <p class="label"><span>&gt;</span> claude code setup?</p>
-      <pre>claude mcp add ${config.name} https://kernelize.dev${config.path}</pre>
+      <p class="label"><span>&gt;</span> claude code?</p>
+      <pre>claude mcp add --transport http ${config.name} https://kernelize.dev${config.path}</pre>
+    </section>
+
+    <section>
+      <p class="label"><span>&gt;</span> opencode?</p>
+      <pre>{
+  "mcpServers": {
+    "${config.name}": {
+      "type": "sse",
+      "url": "https://kernelize.dev${config.path}"
+    }
+  }
+}</pre>
+    </section>
+
+    <section>
+      <p class="label"><span>&gt;</span> manual?</p>
+      <div class="tools">
+        <div class="tool">
+          <code>url</code>
+          <span>·</span>
+          <p>https://kernelize.dev${config.path}</p>
+        </div>
+        <div class="tool">
+          <code>transport</code>
+          <span>·</span>
+          <p>http</p>
+        </div>
+      </div>
     </section>
 
     <section>

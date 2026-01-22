@@ -1,9 +1,8 @@
 import { ImageResponse } from "next/og"
 
-export const size = { width: 180, height: 180 }
-export const contentType = "image/png"
+export const runtime = "edge"
 
-export default function AppleIcon() {
+export async function GET() {
   return new ImageResponse(
     (
       <div
@@ -13,7 +12,7 @@ export default function AppleIcon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "transparent",
+          background: "#0a0a0a",
           borderRadius: "32px",
         }}
       >
@@ -27,6 +26,6 @@ export default function AppleIcon() {
         />
       </div>
     ),
-    { ...size }
+    { width: 180, height: 180 }
   )
 }

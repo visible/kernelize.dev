@@ -30,7 +30,7 @@ export default function Home() {
       </section>
 
       <section>
-        <p className="label"><span>&gt;</span> cursor setup?</p>
+        <p className="label"><span>&gt;</span> cursor?</p>
         <pre>{`{
   "mcpServers": {
     "ai-sdk-docs": {
@@ -41,8 +41,36 @@ export default function Home() {
       </section>
 
       <section>
-        <p className="label"><span>&gt;</span> claude code setup?</p>
-        <pre>claude mcp add ai-sdk-docs https://kernelize.dev/ai/mcp</pre>
+        <p className="label"><span>&gt;</span> claude code?</p>
+        <pre>claude mcp add --transport http ai-sdk-docs https://kernelize.dev/ai/mcp</pre>
+      </section>
+
+      <section>
+        <p className="label"><span>&gt;</span> opencode?</p>
+        <pre>{`{
+  "mcpServers": {
+    "ai-sdk-docs": {
+      "type": "sse",
+      "url": "https://kernelize.dev/ai/mcp"
+    }
+  }
+}`}</pre>
+      </section>
+
+      <section>
+        <p className="label"><span>&gt;</span> manual?</p>
+        <div className="tools">
+          <div className="tool">
+            <code>url</code>
+            <span>·</span>
+            <p>https://kernelize.dev/ai/mcp</p>
+          </div>
+          <div className="tool">
+            <code>transport</code>
+            <span>·</span>
+            <p>http</p>
+          </div>
+        </div>
       </section>
 
       <footer>

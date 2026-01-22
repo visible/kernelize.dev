@@ -1,9 +1,8 @@
 import { ImageResponse } from "next/og"
 
-export const size = { width: 32, height: 32 }
-export const contentType = "image/png"
+export const runtime = "edge"
 
-export default function Icon() {
+export async function GET() {
   return new ImageResponse(
     (
       <div
@@ -13,7 +12,7 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "transparent",
+          background: "#0a0a0a",
         }}
       >
         <div
@@ -26,6 +25,6 @@ export default function Icon() {
         />
       </div>
     ),
-    { ...size }
+    { width: 32, height: 32 }
   )
 }
