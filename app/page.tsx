@@ -22,8 +22,14 @@ export default function Home() {
           <Link href="/mcp" className="tool">
             <code>/mcp</code>
             <span>·</span>
-            <p>all docs combined</p>
+            <p>all docs in one endpoint (recommended)</p>
           </Link>
+        </div>
+      </section>
+
+      <section>
+        <p className="label"><span>&gt;</span> included?</p>
+        <div className="tools">
           {servers.map((server) => (
             <Link key={server.path} href={server.path} className="tool">
               <code>{server.path}</code>
@@ -31,6 +37,7 @@ export default function Home() {
               <p>{server.description}</p>
             </Link>
           ))}
+          <p className="tool-desc">+ auto-includes new docs as they are added</p>
         </div>
       </section>
 
