@@ -33,44 +33,32 @@ export default function Home() {
         <p className="label"><span>&gt;</span> cursor?</p>
         <pre>{`{
   "mcpServers": {
-    "ai-sdk-docs": {
-      "url": "https://kernelize.dev/ai/mcp"
-    }
+    "ai-sdk-docs": { "url": "https://kernelize.dev/ai/mcp" },
+    "hono-docs": { "url": "https://kernelize.dev/hono/mcp" },
+    "svelte-docs": { "url": "https://kernelize.dev/svelte/mcp" },
+    "effect-docs": { "url": "https://kernelize.dev/effect/mcp" }
   }
 }`}</pre>
       </section>
 
       <section>
         <p className="label"><span>&gt;</span> claude code?</p>
-        <pre>claude mcp add --transport http ai-sdk-docs https://kernelize.dev/ai/mcp</pre>
+        <pre>{`claude mcp add -t http ai-sdk-docs https://kernelize.dev/ai/mcp
+claude mcp add -t http hono-docs https://kernelize.dev/hono/mcp
+claude mcp add -t http svelte-docs https://kernelize.dev/svelte/mcp
+claude mcp add -t http effect-docs https://kernelize.dev/effect/mcp`}</pre>
       </section>
 
       <section>
         <p className="label"><span>&gt;</span> opencode?</p>
         <pre>{`{
   "mcpServers": {
-    "ai-sdk-docs": {
-      "type": "sse",
-      "url": "https://kernelize.dev/ai/mcp"
-    }
+    "ai-sdk-docs": { "type": "sse", "url": "https://kernelize.dev/ai/mcp" },
+    "hono-docs": { "type": "sse", "url": "https://kernelize.dev/hono/mcp" },
+    "svelte-docs": { "type": "sse", "url": "https://kernelize.dev/svelte/mcp" },
+    "effect-docs": { "type": "sse", "url": "https://kernelize.dev/effect/mcp" }
   }
 }`}</pre>
-      </section>
-
-      <section>
-        <p className="label"><span>&gt;</span> manual?</p>
-        <div className="tools">
-          <div className="tool">
-            <code>url</code>
-            <span>·</span>
-            <p>https://kernelize.dev/ai/mcp</p>
-          </div>
-          <div className="tool">
-            <code>transport</code>
-            <span>·</span>
-            <p>http</p>
-          </div>
-        </div>
       </section>
 
       <footer>
