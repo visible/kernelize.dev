@@ -14,11 +14,38 @@ jobs:
       - name: check
         id: check
         run: |
-          CURRENT=$(curl -s "https://api.github.com/repos/vercel/ai/commits?path=content&per_page=1" | jq -r '.[0].sha')
-          LAST=$(cat .content-hash 2>/dev/null || echo "")
-          if [ "$CURRENT" != "$LAST" ]; then
+          changed=false
+
+          check_repo() {
+            local repo=$1
+            local path=$2
+            local key=$3
+
+            current=$(curl -s "https://api.github.com/repos/$repo/commits?path=$path&per_page=1" | jq -r '.[0].sha // empty')
+            last=$(jq -r ".$key // empty" .content-hash.json 2>/dev/null)
+
+            if [ -n "$current" ] && [ "$current" != "$last" ]; then
+              changed=true
+              echo "$key=$current" >> $GITHUB_ENV
+            fi
+          }
+
+          check_repo "vercel/ai" "content" "ai"
+          check_repo "honojs/website" "docs" "hono"
+          check_repo "sveltejs/svelte.dev" "apps/svelte.dev/content" "svelte"
+          check_repo "Effect-TS/website" "content/src/content/docs" "effect"
+
+          if [ "$changed" = true ]; then
             echo "changed=true" >> $GITHUB_OUTPUT
-            echo "$CURRENT" > .content-hash
+
+            cat > .content-hash.json << EOF
+          {
+            "ai": "${ai:-$(jq -r '.ai // empty' .content-hash.json 2>/dev/null)}",
+            "hono": "${hono:-$(jq -r '.hono // empty' .content-hash.json 2>/dev/null)}",
+            "svelte": "${svelte:-$(jq -r '.svelte // empty' .content-hash.json 2>/dev/null)}",
+            "effect": "${effect:-$(jq -r '.effect // empty' .content-hash.json 2>/dev/null)}"
+          }
+          EOF
           fi
 
       - name: deploy
@@ -26,6 +53,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add .content-hash
+          git add .content-hash.json
           git commit -m "sync"
           git push

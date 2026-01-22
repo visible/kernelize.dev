@@ -1,21 +1,21 @@
 import { createmcp } from '@/lib/mcp'
 import { createcontent } from '@/lib/content'
 
-const content = createcontent('ai')
+const content = createcontent('hono')
 
 const { handler, page } = createmcp({
-  name: 'ai-sdk-docs',
-  title: 'ai sdk',
-  description: 'AI SDK documentation',
-  basePath: '/ai/mcp',
-  sections: ['docs', 'cookbook', 'providers'],
+  name: 'hono-docs',
+  title: 'hono',
+  description: 'Hono framework documentation',
+  basePath: '/hono/mcp',
+  sections: content.getSections(),
   searchDocs: content.searchDocs,
   getDoc: content.getDoc,
   listDocs: content.listDocs,
   tools: [
-    { name: 'search_ai_sdk_docs', description: 'search documentation by keyword' },
-    { name: 'get_ai_sdk_doc', description: 'get full content of a page' },
-    { name: 'list_ai_sdk_docs', description: 'list available pages' },
+    { name: 'search_hono_docs', description: 'search documentation by keyword' },
+    { name: 'get_hono_doc', description: 'get full content of a page' },
+    { name: 'list_hono_docs', description: 'list available pages' },
   ],
 })
 

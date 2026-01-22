@@ -1,21 +1,21 @@
 import { createmcp } from '@/lib/mcp'
 import { createcontent } from '@/lib/content'
 
-const content = createcontent('ai')
+const content = createcontent('svelte')
 
 const { handler, page } = createmcp({
-  name: 'ai-sdk-docs',
-  title: 'ai sdk',
-  description: 'AI SDK documentation',
-  basePath: '/ai/mcp',
-  sections: ['docs', 'cookbook', 'providers'],
+  name: 'svelte-docs',
+  title: 'svelte',
+  description: 'Svelte and SvelteKit documentation',
+  basePath: '/svelte/mcp',
+  sections: content.getSections(),
   searchDocs: content.searchDocs,
   getDoc: content.getDoc,
   listDocs: content.listDocs,
   tools: [
-    { name: 'search_ai_sdk_docs', description: 'search documentation by keyword' },
-    { name: 'get_ai_sdk_doc', description: 'get full content of a page' },
-    { name: 'list_ai_sdk_docs', description: 'list available pages' },
+    { name: 'search_svelte_docs', description: 'search documentation by keyword' },
+    { name: 'get_svelte_doc', description: 'get full content of a page' },
+    { name: 'list_svelte_docs', description: 'list available pages' },
   ],
 })
 

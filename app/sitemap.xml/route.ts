@@ -2,6 +2,9 @@ export async function GET() {
   const urls = [
     "https://kernelize.dev",
     "https://kernelize.dev/ai/mcp",
+    "https://kernelize.dev/hono/mcp",
+    "https://kernelize.dev/svelte/mcp",
+    "https://kernelize.dev/effect/mcp",
   ]
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

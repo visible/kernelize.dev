@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "prebuild": "rm -rf content && git clone --depth 1 --filter=blob:none --sparse https://github.com/vercel/ai.git temp-clone && cd temp-clone && git sparse-checkout set content && cd .. && mv temp-clone/content ./content && rm -rf temp-clone",
+    "prebuild": "sh scripts/clone.sh",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
