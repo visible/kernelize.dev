@@ -22,7 +22,7 @@ export default function Home() {
           <Link href="/mcp" className="tool">
             <code>/mcp</code>
             <span>·</span>
-            <p>all docs in one endpoint (recommended)</p>
+            <p>all docs in one endpoint</p>
           </Link>
         </div>
       </section>
