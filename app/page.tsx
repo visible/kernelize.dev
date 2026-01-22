@@ -37,7 +37,6 @@ export default function Home() {
               <p>{server.description}</p>
             </Link>
           ))}
-          <p className="tool-desc">+ auto-includes new docs as they are added</p>
         </div>
       </section>
 
