@@ -6,6 +6,7 @@ interface Tool {
 interface PageConfig {
   path: string
   name: string
+  title?: string
   description: string
   tools: Tool[]
 }
@@ -60,7 +61,7 @@ export function mcppage(config: PageConfig): string {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${config.name} · kernelize.dev</title>
+  <title>${config.title || config.name}</title>
   <link rel="icon" href="/icon" type="image/png" />
   <link rel="apple-touch-icon" href="/apple-icon" />
   <style>${styles}</style>

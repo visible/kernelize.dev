@@ -37,6 +37,7 @@ interface DocList {
 
 interface McpConfig {
   name: string
+  title?: string
   description: string
   basePath: string
   sections: string[]
@@ -125,6 +126,7 @@ export function createmcp(config: McpConfig) {
   const page = mcppage({
     path: config.basePath,
     name: config.name,
+    title: config.title,
     description: config.description,
     tools: config.tools,
   })

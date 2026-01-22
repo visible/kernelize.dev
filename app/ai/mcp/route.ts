@@ -3,6 +3,7 @@ import { searchDocs, getDoc, listDocs } from '@/lib/content'
 
 const { handler, page } = createmcp({
   name: 'ai-sdk-docs',
+  title: 'ai sdk',
   description: 'AI SDK documentation',
   basePath: '/ai/mcp',
   sections: ['docs', 'cookbook', 'providers'],
