@@ -13,7 +13,7 @@ export default function Home() {
             aria-hidden="true"
           >{`┌──────────────────────────────────────────────────────────────┐
 │                                                              │
-│   ◇  kernelize.dev                                           │
+│   █ kernelize.dev                                            │
 │   mcp servers for ai development                             │
 │                                                              │
 └──────────────────────────────────────────────────────────────┘`}</pre>
