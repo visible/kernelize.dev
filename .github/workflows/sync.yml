@@ -27,6 +27,8 @@ jobs:
             if [ -n "$current" ] && [ "$current" != "$last" ]; then
               changed=true
               echo "$key=$current" >> $GITHUB_ENV
+            else
+              echo "$key=$last" >> $GITHUB_ENV
             fi
           }
 
@@ -35,24 +37,23 @@ jobs:
           check_repo "sveltejs/svelte.dev" "apps/svelte.dev/content" "svelte"
           check_repo "Effect-TS/website" "content/src/content/docs" "effect"
 
-          if [ "$changed" = true ]; then
-            echo "changed=true" >> $GITHUB_OUTPUT
+          echo "changed=$changed" >> $GITHUB_OUTPUT
 
-            cat > .content-hash.json << EOF
-          {
-            "ai": "${ai:-$(jq -r '.ai // empty' .content-hash.json 2>/dev/null)}",
-            "hono": "${hono:-$(jq -r '.hono // empty' .content-hash.json 2>/dev/null)}",
-            "svelte": "${svelte:-$(jq -r '.svelte // empty' .content-hash.json 2>/dev/null)}",
-            "effect": "${effect:-$(jq -r '.effect // empty' .content-hash.json 2>/dev/null)}"
-          }
-          EOF
-          fi
+      - name: update
+        if: steps.check.outputs.changed == 'true'
+        run: |
+          echo '{
+            "ai": "${{ env.ai }}",
+            "hono": "${{ env.hono }}",
+            "svelte": "${{ env.svelte }}",
+            "effect": "${{ env.effect }}"
+          }' > .content-hash.json
 
       - name: deploy
         if: steps.check.outputs.changed == 'true'
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
           git add .content-hash.json
           git commit -m "sync"
           git push
