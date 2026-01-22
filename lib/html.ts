@@ -62,8 +62,7 @@ export function mcppage(config: PageConfig): string {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${config.title || config.name}</title>
-  <link rel="icon" href="/icon" type="image/png" />
-  <link rel="apple-touch-icon" href="/apple-icon" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <style>${styles}</style>
 </head>
 <body>
