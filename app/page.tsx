@@ -43,10 +43,7 @@ export default function Home() {
 
       <section>
         <p className="label"><span>&gt;</span> claude code?</p>
-        <pre>{`claude mcp add -t http ai-sdk-docs https://kernelize.dev/ai/mcp
-claude mcp add -t http hono-docs https://kernelize.dev/hono/mcp
-claude mcp add -t http svelte-docs https://kernelize.dev/svelte/mcp
-claude mcp add -t http effect-docs https://kernelize.dev/effect/mcp`}</pre>
+        <pre>for s in ai hono svelte effect; do claude mcp add -t http $s-docs https://kernelize.dev/$s/mcp; done</pre>
       </section>
 
       <section>
