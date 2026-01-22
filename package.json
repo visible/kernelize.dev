@@ -1,0 +1,25 @@
+{
+  "name": "kernelize",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "prebuild": "rm -rf content && git clone --depth 1 --filter=blob:none --sparse https://github.com/vercel/ai.git temp-clone && cd temp-clone && git sparse-checkout set content && cd .. && mv temp-clone/content ./content && rm -rf temp-clone",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "mcp-handler": "^1.0.2",
+    "next": "16.1.4",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^5"
+  }
+}
