@@ -10,6 +10,7 @@ svelte_hash=""
 effect_hash=""
 workflow_hash=""
 octokit_hash=""
+turborepo_hash=""
 
 clone() {
   local repo=$1
@@ -53,6 +54,8 @@ svelte_hash=$(clone "sveltejs/svelte.dev" "apps/svelte.dev/content" "svelte")
 effect_hash=$(clone "Effect-TS/website" "content/src/content/docs" "effect")
 workflow_hash=$(clone "vercel/workflow" "docs/content" "workflow")
 octokit_hash=$(cloneoctokit)
+turborepo_hash=$(clone "vercel/turborepo" "docs/site/content/docs" "turborepo")
+find content/turborepo -name "*.tsx" -o -name "*.ts" -o -name "*.json" | xargs rm -f 2>/dev/null || true
 
 cat > public/hashes.json << EOF
 {
@@ -61,7 +64,8 @@ cat > public/hashes.json << EOF
   "svelte": "$svelte_hash",
   "effect": "$effect_hash",
   "workflow": "$workflow_hash",
-  "octokit": "$octokit_hash"
+  "octokit": "$octokit_hash",
+  "turborepo": "$turborepo_hash"
 }
 EOF
 

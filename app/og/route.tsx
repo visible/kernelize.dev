@@ -10,6 +10,7 @@ const titles: Record<string, string> = {
   effect: "mcp server for effect docs",
   workflow: "mcp server for workflow docs",
   octokit: "mcp server for octokit docs",
+  turborepo: "mcp server for turborepo docs",
 };
 
 export async function GET(request: NextRequest) {

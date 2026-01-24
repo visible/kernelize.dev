@@ -27,6 +27,8 @@ export const metadata: Metadata = {
     "effect",
     "octokit",
     "github",
+    "turborepo",
+    "monorepo",
   ],
   authors: [{ name: "visible", url: "https://github.com/visible" }],
   creator: "visible",

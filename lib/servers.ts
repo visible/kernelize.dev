@@ -42,4 +42,10 @@ export const servers: Server[] = [
     description: "search and read github sdk documentation",
     tools: ["search_octokit_docs", "get_octokit_doc", "list_octokit_docs"],
   },
+  {
+    path: "/turborepo/mcp",
+    name: "turborepo",
+    description: "search and read turborepo documentation",
+    tools: ["search_turborepo_docs", "get_turborepo_doc", "list_turborepo_docs"],
+  },
 ];
