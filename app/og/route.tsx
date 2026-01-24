@@ -22,11 +22,6 @@ export async function GET() {
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            border: "1px dashed #333",
-            padding: "48px 56px",
-            width: "100%",
-            maxWidth: "900px",
-            height: "280px",
           }}
         >
           <span style={{ color: "#888", fontSize: "28px", marginBottom: "8px" }}>
