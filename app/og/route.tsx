@@ -4,10 +4,12 @@ import type { NextRequest } from "next/server";
 export const runtime = "edge";
 
 const titles: Record<string, string> = {
-  ai: "mcp server for ai sdk",
-  hono: "mcp server for hono",
-  svelte: "mcp server for svelte",
-  effect: "mcp server for effect",
+  ai: "mcp server for ai sdk docs",
+  hono: "mcp server for hono docs",
+  svelte: "mcp server for svelte docs",
+  effect: "mcp server for effect docs",
+  workflow: "mcp server for workflow docs",
+  octokit: "mcp server for octokit docs",
 };
 
 export async function GET(request: NextRequest) {
