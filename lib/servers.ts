@@ -36,4 +36,10 @@ export const servers: Server[] = [
     description: "search and read vercel workflow documentation",
     tools: ["search_workflow_docs", "get_workflow_doc", "list_workflow_docs"],
   },
+  {
+    path: "/octokit/mcp",
+    name: "octokit",
+    description: "search and read octokit documentation",
+    tools: ["search_octokit_docs", "get_octokit_doc", "list_octokit_docs"],
+  },
 ];
