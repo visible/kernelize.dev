@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Codeblock } from "@/components/codeblock";
 import { servers } from "@/lib/servers";
 
 export default function Home() {
@@ -52,29 +53,31 @@ export default function Home() {
         <p className="label">
           <span>&gt;</span> cursor?
         </p>
-        <pre>{`{
+        <Codeblock>{`{
   "mcpServers": {
     "kernelize": { "url": "https://kernelize.dev/mcp" }
   }
-}`}</pre>
+}`}</Codeblock>
       </section>
 
       <section>
         <p className="label">
           <span>&gt;</span> claude code?
         </p>
-        <pre>claude mcp add -t http kernelize https://kernelize.dev/mcp</pre>
+        <Codeblock>
+          claude mcp add -t http kernelize https://kernelize.dev/mcp
+        </Codeblock>
       </section>
 
       <section>
         <p className="label">
           <span>&gt;</span> opencode?
         </p>
-        <pre>{`{
+        <Codeblock>{`{
   "mcpServers": {
     "kernelize": { "type": "sse", "url": "https://kernelize.dev/mcp" }
   }
-}`}</pre>
+}`}</Codeblock>
       </section>
 
       <footer>
