@@ -26,21 +26,23 @@ clone() {
   echo "$hash"
 }
 
-clonereadme() {
-  local repo=$1
-  local name=$2
-  local target=$3
-
-  curl -sL "https://raw.githubusercontent.com/$repo/HEAD/README.md" > "content/$target/$name.md"
-}
-
 cloneoctokit() {
   mkdir -p content/octokit
-  local repos="octokit/octokit.js octokit/rest.js octokit/graphql.js octokit/core.js octokit/auth-app.js octokit/auth-token.js octokit/auth-oauth-app.js octokit/action.js octokit/app.js octokit/webhooks.js octokit/oauth-app.js octokit/plugin-throttling.js octokit/plugin-retry.js octokit/plugin-paginate-rest.js octokit/request.js"
-  for repo in $repos; do
-    local name=$(echo "$repo" | cut -d'/' -f2 | sed 's/\.js$//')
-    clonereadme "$repo" "$name" "octokit"
-  done
+  curl -sL "https://raw.githubusercontent.com/octokit/octokit.js/HEAD/README.md" > "content/octokit/overview.md"
+  curl -sL "https://raw.githubusercontent.com/octokit/rest.js/HEAD/README.md" > "content/octokit/rest-client.md"
+  curl -sL "https://raw.githubusercontent.com/octokit/graphql.js/HEAD/README.md" > "content/octokit/graphql-client.md"
+  curl -sL "https://raw.githubusercontent.com/octokit/core.js/HEAD/README.md" > "content/octokit/core.md"
+  curl -sL "https://raw.githubusercontent.com/octokit/request.js/HEAD/README.md" > "content/octokit/requests.md"
+  curl -sL "https://raw.githubusercontent.com/octokit/auth-app.js/HEAD/README.md" > "content/octokit/auth-github-apps.md"
+  curl -sL "https://raw.githubusercontent.com/octokit/auth-token.js/HEAD/README.md" > "content/octokit/auth-tokens.md"
+  curl -sL "https://raw.githubusercontent.com/octokit/auth-oauth-app.js/HEAD/README.md" > "content/octokit/auth-oauth.md"
+  curl -sL "https://raw.githubusercontent.com/octokit/action.js/HEAD/README.md" > "content/octokit/github-actions.md"
+  curl -sL "https://raw.githubusercontent.com/octokit/app.js/HEAD/README.md" > "content/octokit/apps.md"
+  curl -sL "https://raw.githubusercontent.com/octokit/webhooks.js/HEAD/README.md" > "content/octokit/webhooks.md"
+  curl -sL "https://raw.githubusercontent.com/octokit/oauth-app.js/HEAD/README.md" > "content/octokit/oauth.md"
+  curl -sL "https://raw.githubusercontent.com/octokit/plugin-throttling.js/HEAD/README.md" > "content/octokit/throttling.md"
+  curl -sL "https://raw.githubusercontent.com/octokit/plugin-retry.js/HEAD/README.md" > "content/octokit/retry.md"
+  curl -sL "https://raw.githubusercontent.com/octokit/plugin-paginate-rest.js/HEAD/README.md" > "content/octokit/pagination.md"
   local hash=$(curl -s "https://api.github.com/repos/octokit/octokit.js/commits?per_page=1" | grep -o '"sha": "[^"]*"' | head -1 | cut -d'"' -f4)
   echo "$hash"
 }
