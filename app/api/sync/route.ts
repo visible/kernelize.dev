@@ -12,7 +12,7 @@ const repos = [
     key: "effect",
   },
   { repo: "vercel/workflow", path: "docs/content", key: "workflow" },
-  { repo: "octokit/rest.js", path: "docs/src/pages/api", key: "octokit" },
+  { repo: "octokit/octokit.js", path: "README.md", key: "octokit" },
 ];
 
 async function getlatestcommit(
