@@ -36,7 +36,7 @@ clonereadme() {
 
 cloneoctokit() {
   mkdir -p content/octokit
-  local repos="octokit/octokit.js octokit/rest.js octokit/graphql.js octokit/core.js octokit/auth-app.js octokit/auth-token.js octokit/action.js octokit/plugin-throttling.js octokit/plugin-retry.js octokit/request.js"
+  local repos="octokit/octokit.js octokit/rest.js octokit/graphql.js octokit/core.js octokit/auth-app.js octokit/auth-token.js octokit/auth-oauth-app.js octokit/action.js octokit/app.js octokit/webhooks.js octokit/oauth-app.js octokit/plugin-throttling.js octokit/plugin-retry.js octokit/plugin-paginate-rest.js octokit/request.js"
   for repo in $repos; do
     local name=$(echo "$repo" | cut -d'/' -f2 | sed 's/\.js$//')
     clonereadme "$repo" "$name" "octokit"
