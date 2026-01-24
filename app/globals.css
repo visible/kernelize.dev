@@ -94,6 +94,12 @@ pre {
   align-items: center;
   justify-content: center;
   border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.codeblock:hover button {
+  opacity: 1;
 }
 
 .codeblock button:hover {
