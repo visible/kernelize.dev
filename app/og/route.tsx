@@ -1,8 +1,19 @@
 import { ImageResponse } from "next/og"
+import { NextRequest } from "next/server"
 
 export const runtime = "edge"
 
-export async function GET() {
+const titles: Record<string, string> = {
+  ai: "mcp server for ai sdk",
+  hono: "mcp server for hono",
+  svelte: "mcp server for svelte",
+  effect: "mcp server for effect",
+}
+
+export async function GET(request: NextRequest) {
+  const server = request.nextUrl.searchParams.get("server")
+  const subtitle = server ? titles[server] : "mcp servers for ai development"
+
   return new ImageResponse(
     (
       <div
@@ -28,7 +39,7 @@ export async function GET() {
             kernelize.dev
           </span>
           <span style={{ color: "#555", fontSize: "24px" }}>
-            mcp servers for ai development
+            {subtitle}
           </span>
         </div>
       </div>

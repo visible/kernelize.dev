@@ -56,12 +56,24 @@ export function mcppage(config: PageConfig): string {
     </div>
   `).join('')
 
+  const server = config.path.split('/')[1]
+  const ogUrl = `https://kernelize.dev/og?server=${server}`
+
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${config.title || config.name}</title>
+  <meta name="description" content="${config.description}">
+  <meta property="og:title" content="${config.title || config.name}">
+  <meta property="og:description" content="${config.description}">
+  <meta property="og:image" content="${ogUrl}">
+  <meta property="og:url" content="https://kernelize.dev${config.path}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${config.title || config.name}">
+  <meta name="twitter:description" content="${config.description}">
+  <meta name="twitter:image" content="${ogUrl}">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <style>${styles}</style>
 </head>
