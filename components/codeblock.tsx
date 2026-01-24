@@ -13,7 +13,7 @@ export function Codeblock({ children }: { children: string }) {
 
   return (
     <div className="group relative">
-      <pre className="overflow-auto bg-neutral-950 p-3 text-xs leading-relaxed text-neutral-400">
+      <pre className="overflow-auto rounded border border-neutral-800 bg-neutral-950 p-3 text-xs leading-relaxed text-neutral-400">
         {children}
       </pre>
       <button
