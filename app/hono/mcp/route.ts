@@ -4,7 +4,7 @@ import { createcontent } from '@/lib/content'
 const content = createcontent('hono')
 
 const { handler, page } = createmcp({
-  name: 'hono-docs',
+  name: 'hono',
   title: 'hono',
   description: 'Hono framework documentation',
   basePath: '/hono/mcp',

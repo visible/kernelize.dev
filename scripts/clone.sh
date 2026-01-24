@@ -8,6 +8,7 @@ ai_hash=""
 hono_hash=""
 svelte_hash=""
 effect_hash=""
+workflow_hash=""
 
 clone() {
   local repo=$1
@@ -28,13 +29,15 @@ ai_hash=$(clone "vercel/ai" "content" "ai")
 hono_hash=$(clone "honojs/website" "docs" "hono")
 svelte_hash=$(clone "sveltejs/svelte.dev" "apps/svelte.dev/content" "svelte")
 effect_hash=$(clone "Effect-TS/website" "content/src/content/docs" "effect")
+workflow_hash=$(clone "vercel/workflow" "docs/content" "workflow")
 
 cat > public/hashes.json << EOF
 {
   "ai": "$ai_hash",
   "hono": "$hono_hash",
   "svelte": "$svelte_hash",
-  "effect": "$effect_hash"
+  "effect": "$effect_hash",
+  "workflow": "$workflow_hash"
 }
 EOF
 

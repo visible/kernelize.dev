@@ -3,6 +3,7 @@ const repos = [
   { repo: 'honojs/website', path: 'docs', key: 'hono' },
   { repo: 'sveltejs/svelte.dev', path: 'apps/svelte.dev/content', key: 'svelte' },
   { repo: 'Effect-TS/website', path: 'content/src/content/docs', key: 'effect' },
+  { repo: 'vercel/workflow', path: 'docs/content', key: 'workflow' },
 ]
 
 async function getlatestcommit(repo: string, path: string): Promise<string | null> {

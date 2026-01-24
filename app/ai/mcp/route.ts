@@ -4,7 +4,7 @@ import { createcontent } from '@/lib/content'
 const content = createcontent('ai')
 
 const { handler, page } = createmcp({
-  name: 'ai-sdk-docs',
+  name: 'ai',
   title: 'ai sdk',
   description: 'AI SDK documentation',
   basePath: '/ai/mcp',

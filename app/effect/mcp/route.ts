@@ -4,7 +4,7 @@ import { createcontent } from '@/lib/content'
 const content = createcontent('effect')
 
 const { handler, page } = createmcp({
-  name: 'effect-docs',
+  name: 'effect',
   title: 'effect',
   description: 'Effect-TS documentation',
   basePath: '/effect/mcp',

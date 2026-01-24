@@ -1,21 +1,21 @@
 import { createmcp } from '@/lib/mcp'
 import { createcontent } from '@/lib/content'
 
-const content = createcontent('svelte')
+const content = createcontent('workflow')
 
 const { handler, page } = createmcp({
-  name: 'svelte',
-  title: 'svelte',
-  description: 'Svelte and SvelteKit documentation',
-  basePath: '/svelte/mcp',
-  sections: content.getSections(),
+  name: 'workflow',
+  title: 'workflow',
+  description: 'Vercel Workflow documentation',
+  basePath: '/workflow/mcp',
+  sections: ['docs', 'guides'],
   searchDocs: content.searchDocs,
   getDoc: content.getDoc,
   listDocs: content.listDocs,
   tools: [
-    { name: 'search_svelte_docs', description: 'search documentation by keyword' },
-    { name: 'get_svelte_doc', description: 'get full content of a page' },
-    { name: 'list_svelte_docs', description: 'list available pages' },
+    { name: 'search_workflow_docs', description: 'search documentation by keyword' },
+    { name: 'get_workflow_doc', description: 'get full content of a page' },
+    { name: 'list_workflow_docs', description: 'list available pages' },
   ],
 })
 
