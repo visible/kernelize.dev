@@ -9,6 +9,7 @@ hono_hash=""
 svelte_hash=""
 effect_hash=""
 workflow_hash=""
+octokit_hash=""
 
 clone() {
   local repo=$1
@@ -25,11 +26,33 @@ clone() {
   echo "$hash"
 }
 
+cloneoctokit() {
+  mkdir -p content/octokit
+  curl -sL "https://raw.githubusercontent.com/octokit/octokit.js/HEAD/README.md" > "content/octokit/overview.md"
+  curl -sL "https://raw.githubusercontent.com/octokit/rest.js/HEAD/README.md" > "content/octokit/rest-client.md"
+  curl -sL "https://raw.githubusercontent.com/octokit/graphql.js/HEAD/README.md" > "content/octokit/graphql-client.md"
+  curl -sL "https://raw.githubusercontent.com/octokit/core.js/HEAD/README.md" > "content/octokit/core.md"
+  curl -sL "https://raw.githubusercontent.com/octokit/request.js/HEAD/README.md" > "content/octokit/requests.md"
+  curl -sL "https://raw.githubusercontent.com/octokit/auth-app.js/HEAD/README.md" > "content/octokit/auth-github-apps.md"
+  curl -sL "https://raw.githubusercontent.com/octokit/auth-token.js/HEAD/README.md" > "content/octokit/auth-tokens.md"
+  curl -sL "https://raw.githubusercontent.com/octokit/auth-oauth-app.js/HEAD/README.md" > "content/octokit/auth-oauth.md"
+  curl -sL "https://raw.githubusercontent.com/octokit/action.js/HEAD/README.md" > "content/octokit/github-actions.md"
+  curl -sL "https://raw.githubusercontent.com/octokit/app.js/HEAD/README.md" > "content/octokit/apps.md"
+  curl -sL "https://raw.githubusercontent.com/octokit/webhooks.js/HEAD/README.md" > "content/octokit/webhooks.md"
+  curl -sL "https://raw.githubusercontent.com/octokit/oauth-app.js/HEAD/README.md" > "content/octokit/oauth.md"
+  curl -sL "https://raw.githubusercontent.com/octokit/plugin-throttling.js/HEAD/README.md" > "content/octokit/throttling.md"
+  curl -sL "https://raw.githubusercontent.com/octokit/plugin-retry.js/HEAD/README.md" > "content/octokit/retry.md"
+  curl -sL "https://raw.githubusercontent.com/octokit/plugin-paginate-rest.js/HEAD/README.md" > "content/octokit/pagination.md"
+  local hash=$(curl -s "https://api.github.com/repos/octokit/octokit.js/commits?per_page=1" | grep -o '"sha": "[^"]*"' | head -1 | cut -d'"' -f4)
+  echo "$hash"
+}
+
 ai_hash=$(clone "vercel/ai" "content" "ai")
 hono_hash=$(clone "honojs/website" "docs" "hono")
 svelte_hash=$(clone "sveltejs/svelte.dev" "apps/svelte.dev/content" "svelte")
 effect_hash=$(clone "Effect-TS/website" "content/src/content/docs" "effect")
 workflow_hash=$(clone "vercel/workflow" "docs/content" "workflow")
+octokit_hash=$(cloneoctokit)
 
 cat > public/hashes.json << EOF
 {
@@ -37,7 +60,8 @@ cat > public/hashes.json << EOF
   "hono": "$hono_hash",
   "svelte": "$svelte_hash",
   "effect": "$effect_hash",
-  "workflow": "$workflow_hash"
+  "workflow": "$workflow_hash",
+  "octokit": "$octokit_hash"
 }
 EOF
 

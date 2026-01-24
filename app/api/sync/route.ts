@@ -12,6 +12,7 @@ const repos = [
     key: "effect",
   },
   { repo: "vercel/workflow", path: "docs/content", key: "workflow" },
+  { repo: "octokit/octokit.js", path: "README.md", key: "octokit" },
 ];
 
 async function getlatestcommit(
@@ -34,34 +35,41 @@ async function gethashes(): Promise<Record<string, string>> {
 }
 
 export async function GET(request: Request) {
-  const auth = request.headers.get("authorization");
-  if (auth !== `Bearer ${process.env.CRON_SECRET}`) {
-    return new Response("unauthorized", { status: 401 });
-  }
-
-  const hashes = await gethashes();
-  let changed = false;
-
-  for (const { repo, path, key } of repos) {
-    const latest = await getlatestcommit(repo, path);
-    if (latest && latest !== hashes[key]) {
-      changed = true;
-      break;
+  try {
+    const auth = request.headers.get("authorization");
+    if (auth !== `Bearer ${process.env.CRON_SECRET}`) {
+      return new Response("unauthorized", { status: 401 });
     }
-  }
 
-  if (!changed) {
-    return Response.json({ redeployed: false });
-  }
+    const hashes = await gethashes();
+    let changed = false;
 
-  const hook = process.env.DEPLOY_HOOK;
-  if (!hook) {
+    for (const { repo, path, key } of repos) {
+      const latest = await getlatestcommit(repo, path);
+      if (latest && latest !== hashes[key]) {
+        changed = true;
+        break;
+      }
+    }
+
+    if (!changed) {
+      return Response.json({ redeployed: false });
+    }
+
+    const hook = process.env.DEPLOY_HOOK;
+    if (!hook) {
+      return Response.json(
+        { error: "no deploy hook configured" },
+        { status: 500 },
+      );
+    }
+
+    await fetch(hook, { method: "POST" });
+    return Response.json({ redeployed: true });
+  } catch (error) {
     return Response.json(
-      { error: "no deploy hook configured" },
+      { error: error instanceof Error ? error.message : "unknown error" },
       { status: 500 },
     );
   }
-
-  await fetch(hook, { method: "POST" });
-  return Response.json({ redeployed: true });
 }
