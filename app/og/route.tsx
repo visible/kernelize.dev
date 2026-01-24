@@ -14,7 +14,7 @@ const titles: Record<string, string> = {
 
 export async function GET(request: NextRequest) {
   const server = request.nextUrl.searchParams.get("server");
-  const subtitle = server ? titles[server] : "mcp servers for ai development";
+  const subtitle = server ? titles[server] : "mcp servers for documentation";
 
   return new ImageResponse(
     <div
@@ -24,7 +24,7 @@ export async function GET(request: NextRequest) {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#0a0a0a",
+        backgroundColor: "#fafafa",
         fontFamily: "monospace",
         padding: "60px",
       }}
@@ -36,10 +36,18 @@ export async function GET(request: NextRequest) {
           justifyContent: "center",
         }}
       >
-        <span style={{ color: "#888", fontSize: "28px", marginBottom: "8px" }}>
-          kernelize.dev
+        <span
+          style={{
+            color: "#1a1a1a",
+            fontSize: "48px",
+            marginBottom: "16px",
+            textTransform: "uppercase",
+            letterSpacing: "0.2em",
+          }}
+        >
+          Kernelize
         </span>
-        <span style={{ color: "#555", fontSize: "24px" }}>{subtitle}</span>
+        <span style={{ color: "#737373", fontSize: "24px" }}>{subtitle}</span>
       </div>
     </div>,
     {
