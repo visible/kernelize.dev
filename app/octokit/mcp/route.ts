@@ -6,7 +6,7 @@ const content = createcontent("octokit");
 const { handler, page } = createmcp({
   name: "octokit",
   title: "octokit",
-  description: "Octokit REST API documentation",
+  description: "GitHub SDK documentation",
   basePath: "/octokit/mcp",
   sections: [],
   searchDocs: content.searchDocs,

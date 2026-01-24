@@ -39,7 +39,7 @@ export const servers: Server[] = [
   {
     path: "/octokit/mcp",
     name: "octokit",
-    description: "search and read octokit documentation",
+    description: "search and read github sdk documentation",
     tools: ["search_octokit_docs", "get_octokit_doc", "list_octokit_docs"],
   },
 ];
