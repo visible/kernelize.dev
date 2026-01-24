@@ -2,23 +2,11 @@
 
 @theme {
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
-  --color-bg: #000000;
-  --color-fg: #ffffff;
-  --color-muted: #888888;
-  --color-subtle: #444444;
-  --color-border: #222222;
-  --color-surface: #111111;
-  --color-accent: #10b981;
-}
-
-::selection {
-  background: var(--color-accent);
-  color: var(--color-bg);
 }
 
 body {
-  background: var(--color-bg);
-  color: var(--color-fg);
+  background: #0a0a0a;
+  color: #e5e5e5;
   font-family: var(--font-mono);
   min-height: 100vh;
 }
