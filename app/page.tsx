@@ -4,33 +4,49 @@ import { Codeblock } from "@/components/codeblock";
 
 export default function Home() {
   return (
-    <main className="min-h-screen px-6 py-16">
-      <div className="mx-auto max-w-xl">
-        <header className="mb-12">
-          <h1 className="text-sm text-neutral-200">kernelize</h1>
-          <p className="mt-1 text-xs text-neutral-500">
-            mcp servers for documentation
-          </p>
+    <main className="min-h-screen px-8 py-20">
+      <div className="mx-auto max-w-4xl">
+        <header className="mb-16">
+          <h1 className="mb-4 text-2xl font-normal uppercase tracking-[0.3em]">
+            Kernelize
+          </h1>
+          <div className="flex items-center gap-4 text-xs text-neutral-500">
+            <span>MCP servers for documentation</span>
+            <span className="text-neutral-300">·</span>
+            <span>[ {servers.length + 1} endpoints ]</span>
+          </div>
         </header>
 
-        <section className="mb-12">
-          <p className="mb-4 text-xs text-neutral-500">endpoints</p>
-          <div className="space-y-1">
+        <div className="mb-4 flex items-center gap-4">
+          <span className="text-[10px] uppercase tracking-[0.2em] text-neutral-400">
+            Endpoints
+          </span>
+          <div className="h-px flex-1 border-b border-dotted border-neutral-300" />
+        </div>
+
+        <section className="mb-16">
+          <div className="grid gap-1">
             <Link
               href="/mcp"
-              className="flex items-center justify-between py-2 text-sm text-neutral-200 hover:text-white"
+              className="group flex items-center gap-2 py-2 text-sm"
             >
-              <span>/mcp</span>
-              <span className="text-xs text-neutral-500">all docs</span>
+              <span className="text-[#3B5BDB]">/mcp</span>
+              <span className="flex-1 border-b border-dotted border-neutral-200" />
+              <span className="text-xs text-neutral-400 group-hover:text-neutral-600">
+                all documentation
+              </span>
             </Link>
-            {servers.map((server) => (
+            {servers.map((server, i) => (
               <Link
                 key={server.path}
                 href={server.path}
-                className="flex items-center justify-between py-2 text-sm text-neutral-400 hover:text-neutral-200"
+                className="group flex items-center gap-2 py-2 text-sm"
               >
-                <span>{server.path}</span>
-                <span className="text-xs text-neutral-500">
+                <span className="text-neutral-600 group-hover:text-[#3B5BDB]">
+                  {server.path}
+                </span>
+                <span className="flex-1 border-b border-dotted border-neutral-200" />
+                <span className="text-xs text-neutral-400 group-hover:text-neutral-600">
                   {server.description}
                 </span>
               </Link>
@@ -38,42 +54,50 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="mb-12">
-          <p className="mb-4 text-xs text-neutral-500">setup</p>
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2 text-xs text-neutral-500">cursor</p>
-              <Codeblock>{`{
+        <div className="mb-4 flex items-center gap-4">
+          <span className="text-[10px] uppercase tracking-[0.2em] text-neutral-400">
+            Setup
+          </span>
+          <div className="h-px flex-1 border-b border-dotted border-neutral-300" />
+        </div>
+
+        <section className="mb-16 space-y-6">
+          <div>
+            <p className="mb-3 text-[10px] uppercase tracking-[0.15em] text-neutral-400">
+              Cursor
+            </p>
+            <Codeblock>{`{
   "mcpServers": {
     "kernelize": { "url": "https://kernelize.dev/mcp" }
   }
 }`}</Codeblock>
-            </div>
-            <div>
-              <p className="mb-2 text-xs text-neutral-500">claude code</p>
-              <Codeblock>
-                claude mcp add -t http kernelize https://kernelize.dev/mcp
-              </Codeblock>
-            </div>
-            <div>
-              <p className="mb-2 text-xs text-neutral-500">opencode</p>
-              <Codeblock>{`{
+          </div>
+          <div>
+            <p className="mb-3 text-[10px] uppercase tracking-[0.15em] text-neutral-400">
+              Claude Code
+            </p>
+            <Codeblock>claude mcp add -t http kernelize https://kernelize.dev/mcp</Codeblock>
+          </div>
+          <div>
+            <p className="mb-3 text-[10px] uppercase tracking-[0.15em] text-neutral-400">
+              Opencode
+            </p>
+            <Codeblock>{`{
   "mcpServers": {
     "kernelize": { "type": "sse", "url": "https://kernelize.dev/mcp" }
   }
 }`}</Codeblock>
-            </div>
           </div>
         </section>
 
-        <footer className="border-t border-neutral-800 pt-6">
+        <footer className="flex items-center gap-4 border-t border-dotted border-neutral-300 pt-8">
           <a
             href="https://github.com/visible"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs text-neutral-500 hover:text-neutral-300"
+            className="text-xs text-neutral-400 hover:text-[#3B5BDB]"
           >
-            visible
+            github.com/visible
           </a>
         </footer>
       </div>

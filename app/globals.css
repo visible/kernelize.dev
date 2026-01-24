@@ -2,11 +2,18 @@
 
 @theme {
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  --font-serif: "Times New Roman", Times, Georgia, serif;
+  --color-blue: #3B5BDB;
 }
 
 body {
-  background: #0a0a0a;
-  color: #e5e5e5;
+  background: #fafafa;
+  color: #1a1a1a;
   font-family: var(--font-mono);
   min-height: 100vh;
+}
+
+::selection {
+  background: var(--color-blue);
+  color: white;
 }

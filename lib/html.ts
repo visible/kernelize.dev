@@ -13,36 +13,41 @@ interface PageConfig {
 
 const copyIcon = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>`;
 
-const checkIcon = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>`;
+const checkIcon = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>`;
 
 const styles = `
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
   min-height: 100vh;
-  background: #0a0a0a;
-  color: #e5e5e5;
+  background: #fafafa;
+  color: #1a1a1a;
   font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
 }
-main { min-height: 100vh; padding: 4rem 1.5rem; }
-.container { max-width: 576px; margin: 0 auto; }
-header { margin-bottom: 3rem; }
-h1 { font-size: 14px; font-weight: 400; color: #e5e5e5; margin-bottom: 0.25rem; }
-.subtitle { color: #737373; font-size: 12px; }
-section { margin-bottom: 3rem; }
-.label { font-size: 12px; color: #737373; margin-bottom: 0.5rem; }
-.codeblock { position: relative; }
-.codeblock pre { background: #0a0a0a; padding: 0.75rem; border-radius: 0.25rem; font-size: 12px; line-height: 1.6; overflow: auto; border: 1px solid #262626; color: #a3a3a3; margin: 0; }
-.codeblock button { position: absolute; top: 0.5rem; right: 0.5rem; background: transparent; border: none; color: #525252; cursor: pointer; padding: 0.25rem; display: flex; align-items: center; justify-content: center; border-radius: 4px; opacity: 0; transition: opacity 0.15s; }
+::selection { background: #3B5BDB; color: white; }
+main { min-height: 100vh; padding: 5rem 2rem; }
+.container { max-width: 896px; margin: 0 auto; }
+header { margin-bottom: 4rem; }
+h1 { font-size: 1.5rem; font-weight: 400; text-transform: uppercase; letter-spacing: 0.3em; margin-bottom: 1rem; }
+.meta { display: flex; align-items: center; gap: 1rem; font-size: 12px; color: #737373; }
+.meta .dot { color: #d4d4d4; }
+.divider { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.divider span { font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: #a3a3a3; }
+.divider .line { flex: 1; height: 1px; border-bottom: 1px dotted #d4d4d4; }
+section { margin-bottom: 4rem; }
+.codeblock { position: relative; margin-bottom: 1rem; }
+.codeblock pre { background: white; padding: 0.75rem; font-size: 11px; line-height: 1.6; overflow: auto; border: 1px solid #e5e5e5; color: #525252; margin: 0; }
+.codeblock button { position: absolute; top: 0.5rem; right: 0.5rem; background: transparent; border: none; color: #d4d4d4; cursor: pointer; padding: 0.25rem; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.15s; }
 .codeblock:hover button { opacity: 1; }
-.codeblock button:hover { color: #a3a3a3; }
-.tools { display: flex; flex-direction: column; gap: 0.5rem; }
-.tool { display: flex; align-items: center; gap: 0.75rem; font-size: 12px; }
-.tool code { color: #a3a3a3; }
-.tool span { color: #525252; }
-.tool p { color: #737373; margin: 0; }
-footer { padding-top: 1.5rem; border-top: 1px solid #262626; }
-footer a { color: #737373; font-size: 12px; text-decoration: none; }
-footer a:hover { color: #d4d4d4; }
+.codeblock button:hover { color: #3B5BDB; }
+.label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: #a3a3a3; margin-bottom: 0.5rem; }
+.tools { display: flex; flex-direction: column; gap: 0.25rem; }
+.tool { display: flex; align-items: center; gap: 0.5rem; font-size: 12px; padding: 0.5rem 0; }
+.tool code { color: #525252; }
+.tool .line { flex: 1; border-bottom: 1px dotted #e5e5e5; }
+.tool span { color: #a3a3a3; }
+footer { padding-top: 2rem; border-top: 1px dotted #d4d4d4; }
+footer a { color: #a3a3a3; font-size: 12px; text-decoration: none; }
+footer a:hover { color: #3B5BDB; }
 `;
 
 const script = `
@@ -64,8 +69,8 @@ export function mcppage(config: PageConfig): string {
       (tool) => `
     <div class="tool">
       <code>${tool.name}</code>
-      <span>·</span>
-      <p>${tool.description}</p>
+      <div class="line"></div>
+      <span>${tool.description}</span>
     </div>
   `,
     )
@@ -76,7 +81,9 @@ export function mcppage(config: PageConfig): string {
 
   const cursorConfig = `{
   "mcpServers": {
-    "${config.name}": { "url": "https://kernelize.dev${config.path}" }
+    "${config.name}": {
+      "url": "https://kernelize.dev${config.path}"
+    }
   }
 }`;
 
@@ -84,7 +91,10 @@ export function mcppage(config: PageConfig): string {
 
   const opencodeConfig = `{
   "mcpServers": {
-    "${config.name}": { "type": "sse", "url": "https://kernelize.dev${config.path}" }
+    "${config.name}": {
+      "type": "sse",
+      "url": "https://kernelize.dev${config.path}"
+    }
   }
 }`;
 
@@ -110,48 +120,41 @@ export function mcppage(config: PageConfig): string {
   <main>
   <div class="container">
     <header>
-      <h1>${config.path}</h1>
-      <p class="subtitle">${config.description}</p>
+      <h1>${config.name}</h1>
+      <div class="meta">
+        <span>${config.description}</span>
+        <span class="dot">·</span>
+        <span>[ ${config.tools.length} tools ]</span>
+      </div>
     </header>
 
+    <div class="divider">
+      <span>Setup</span>
+      <div class="line"></div>
+    </div>
+
     <section>
-      <p class="label">cursor</p>
+      <p class="label">Cursor</p>
       ${codeblock(cursorConfig)}
-    </section>
 
-    <section>
-      <p class="label">claude code</p>
+      <p class="label">Claude Code</p>
       ${codeblock(claudeCommand)}
-    </section>
 
-    <section>
-      <p class="label">opencode</p>
+      <p class="label">Opencode</p>
       ${codeblock(opencodeConfig)}
     </section>
 
-    <section>
-      <p class="label">manual</p>
-      <div class="tools">
-        <div class="tool">
-          <code>url</code>
-          <span>·</span>
-          <p>https://kernelize.dev${config.path}</p>
-        </div>
-        <div class="tool">
-          <code>transport</code>
-          <span>·</span>
-          <p>http</p>
-        </div>
-      </div>
-    </section>
+    <div class="divider">
+      <span>Tools</span>
+      <div class="line"></div>
+    </div>
 
     <section>
-      <p class="label">tools</p>
       <div class="tools">${toolsHtml}</div>
     </section>
 
     <footer>
-      <a href="/" rel="noopener noreferrer">kernelize</a>
+      <a href="/">kernelize.dev</a>
     </footer>
   </div>
   </main>
