@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "prebuild": "sh scripts/clone.sh",
+    "prebuild": "bash scripts/clone.sh",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
