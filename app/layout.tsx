@@ -1,6 +1,6 @@
-import type { Metadata } from "next"
-import { Analytics } from "@vercel/analytics/next"
-import "./globals.css"
+import { Analytics } from "@vercel/analytics/next";
+import type { Metadata } from "next";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "kernelize.dev",
@@ -9,7 +9,16 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.svg",
   },
-  keywords: ["mcp", "model context protocol", "ai", "ai sdk", "cursor", "claude", "claude code", "vercel"],
+  keywords: [
+    "mcp",
+    "model context protocol",
+    "ai",
+    "ai sdk",
+    "cursor",
+    "claude",
+    "claude code",
+    "vercel",
+  ],
   authors: [{ name: "visible", url: "https://github.com/visible" }],
   creator: "visible",
   publisher: "visible",
@@ -39,9 +48,13 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://kernelize.dev",
   },
-}
+};
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body>
@@ -49,5 +62,5 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Analytics />
       </body>
     </html>
-  )
+  );
 }

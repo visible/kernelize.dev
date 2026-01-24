@@ -1,30 +1,33 @@
-import { createmcp } from '@/lib/mcp'
-import { createcontent } from '@/lib/content'
+import { createcontent } from "@/lib/content";
+import { createmcp } from "@/lib/mcp";
 
-const content = createcontent('hono')
+const content = createcontent("hono");
 
 const { handler, page } = createmcp({
-  name: 'hono',
-  title: 'hono',
-  description: 'Hono framework documentation',
-  basePath: '/hono/mcp',
+  name: "hono",
+  title: "hono",
+  description: "Hono framework documentation",
+  basePath: "/hono/mcp",
   sections: content.getSections(),
   searchDocs: content.searchDocs,
   getDoc: content.getDoc,
   listDocs: content.listDocs,
   tools: [
-    { name: 'search_hono_docs', description: 'search documentation by keyword' },
-    { name: 'get_hono_doc', description: 'get full content of a page' },
-    { name: 'list_hono_docs', description: 'list available pages' },
+    {
+      name: "search_hono_docs",
+      description: "search documentation by keyword",
+    },
+    { name: "get_hono_doc", description: "get full content of a page" },
+    { name: "list_hono_docs", description: "list available pages" },
   ],
-})
+});
 
 export async function GET(request: Request) {
-  const accept = request.headers.get('accept') || ''
-  if (accept.includes('text/html')) {
-    return new Response(page, { headers: { 'Content-Type': 'text/html' } })
+  const accept = request.headers.get("accept") || "";
+  if (accept.includes("text/html")) {
+    return new Response(page, { headers: { "Content-Type": "text/html" } });
   }
-  return handler(request)
+  return handler(request);
 }
 
-export { handler as POST, handler as DELETE }
+export { handler as POST, handler as DELETE };
