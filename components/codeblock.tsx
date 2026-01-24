@@ -13,14 +13,14 @@ export function Codeblock({ children }: { children: string }) {
 
   return (
     <div className="group relative">
-      <pre className="overflow-auto bg-neutral-950 p-3 text-xs leading-relaxed text-neutral-600">
+      <pre className="overflow-auto bg-neutral-950 p-3 text-xs leading-relaxed text-neutral-400">
         {children}
       </pre>
       <button
         type="button"
         onClick={copy}
         aria-label="copy to clipboard"
-        className="absolute right-2 top-2 p-1 text-neutral-800 opacity-0 transition-opacity hover:text-neutral-600 group-hover:opacity-100"
+        className="absolute right-2 top-2 p-1 text-neutral-600 opacity-0 transition-opacity hover:text-neutral-400 group-hover:opacity-100"
       >
         {copied ? (
           <svg
