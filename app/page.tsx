@@ -61,39 +61,30 @@ export default function Home() {
           <div className="h-px flex-1 border-b border-dotted border-neutral-300" />
         </div>
 
-        <section className="mb-16 grid gap-8 md:grid-cols-3">
+        <section className="mb-16 space-y-6">
           <div>
-            <p className="mb-2 text-[10px] uppercase tracking-[0.15em] text-neutral-400">
+            <p className="mb-3 text-[10px] uppercase tracking-[0.15em] text-neutral-400">
               Cursor
             </p>
             <Codeblock>{`{
   "mcpServers": {
-    "kernelize": {
-      "url": "https://kernelize.dev/mcp"
-    }
+    "kernelize": { "url": "https://kernelize.dev/mcp" }
   }
 }`}</Codeblock>
           </div>
           <div>
-            <p className="mb-2 text-[10px] uppercase tracking-[0.15em] text-neutral-400">
+            <p className="mb-3 text-[10px] uppercase tracking-[0.15em] text-neutral-400">
               Claude Code
             </p>
-            <Codeblock>
-              {`claude mcp add -t http \\
-  kernelize \\
-  https://kernelize.dev/mcp`}
-            </Codeblock>
+            <Codeblock>claude mcp add -t http kernelize https://kernelize.dev/mcp</Codeblock>
           </div>
           <div>
-            <p className="mb-2 text-[10px] uppercase tracking-[0.15em] text-neutral-400">
+            <p className="mb-3 text-[10px] uppercase tracking-[0.15em] text-neutral-400">
               Opencode
             </p>
             <Codeblock>{`{
   "mcpServers": {
-    "kernelize": {
-      "type": "sse",
-      "url": "https://kernelize.dev/mcp"
-    }
+    "kernelize": { "type": "sse", "url": "https://kernelize.dev/mcp" }
   }
 }`}</Codeblock>
           </div>
