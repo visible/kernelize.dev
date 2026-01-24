@@ -12,9 +12,16 @@ export function Codeblock({ children }: { children: string }) {
   }
 
   return (
-    <div className="codeblock">
-      <pre>{children}</pre>
-      <button type="button" onClick={copy} aria-label="copy to clipboard">
+    <div className="group relative">
+      <pre className="overflow-auto rounded-xl border border-white/10 bg-white/5 p-4 text-sm leading-relaxed text-white/70">
+        {children}
+      </pre>
+      <button
+        type="button"
+        onClick={copy}
+        aria-label="copy to clipboard"
+        className="absolute right-3 top-3 rounded-md p-1.5 text-white/30 opacity-0 transition-all hover:bg-white/10 hover:text-white/60 group-hover:opacity-100"
+      >
         {copied ? (
           <svg
             width="14"
