@@ -23,7 +23,8 @@ body {
   color: #e5e5e5;
   font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
 }
-.container { max-width: 576px; margin: 0 auto; padding: 4rem 1.5rem; }
+main { min-height: 100vh; padding: 4rem 1.5rem; }
+.container { max-width: 576px; margin: 0 auto; }
 header { margin-bottom: 3rem; }
 h1 { font-size: 14px; font-weight: 400; color: #e5e5e5; margin-bottom: 0.25rem; }
 .subtitle { color: #737373; font-size: 12px; }
@@ -106,6 +107,7 @@ export function mcppage(config: PageConfig): string {
   <style>${styles}</style>
 </head>
 <body>
+  <main>
   <div class="container">
     <header>
       <h1>${config.path}</h1>
@@ -152,6 +154,7 @@ export function mcppage(config: PageConfig): string {
       <a href="/" rel="noopener noreferrer">kernelize</a>
     </footer>
   </div>
+  </main>
   <script>${script}</script>
 </body>
 </html>`;
