@@ -11,6 +11,7 @@ effect_hash=""
 workflow_hash=""
 octokit_hash=""
 turborepo_hash=""
+nextjs_hash=""
 
 clone() {
   local repo=$1
@@ -56,6 +57,8 @@ workflow_hash=$(clone "vercel/workflow" "docs/content" "workflow")
 octokit_hash=$(cloneoctokit)
 turborepo_hash=$(clone "vercel/turborepo" "docs/site/content/docs" "turborepo")
 find content/turborepo -name "*.tsx" -o -name "*.ts" -o -name "*.json" | xargs rm -f 2>/dev/null || true
+nextjs_hash=$(clone "vercel/next.js" "docs" "nextjs")
+find content/nextjs -name "*.tsx" -o -name "*.ts" -o -name "*.json" | xargs rm -f 2>/dev/null || true
 
 cat > public/hashes.json << EOF
 {
@@ -65,7 +68,8 @@ cat > public/hashes.json << EOF
   "effect": "$effect_hash",
   "workflow": "$workflow_hash",
   "octokit": "$octokit_hash",
-  "turborepo": "$turborepo_hash"
+  "turborepo": "$turborepo_hash",
+  "nextjs": "$nextjs_hash"
 }
 EOF
 
