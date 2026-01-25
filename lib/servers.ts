@@ -48,4 +48,10 @@ export const servers: Server[] = [
     description: "search and read turborepo documentation",
     tools: ["search_turborepo_docs", "get_turborepo_doc", "list_turborepo_docs"],
   },
+  {
+    path: "/nextjs/mcp",
+    name: "nextjs",
+    description: "search and read next.js documentation",
+    tools: ["search_nextjs_docs", "get_nextjs_doc", "list_nextjs_docs"],
+  },
 ];
