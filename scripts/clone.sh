@@ -12,6 +12,7 @@ workflow_hash=""
 octokit_hash=""
 turborepo_hash=""
 nextjs_hash=""
+tauri_hash=""
 
 clone() {
   local repo=$1
@@ -59,6 +60,9 @@ turborepo_hash=$(clone "vercel/turborepo" "docs/site/content/docs" "turborepo")
 find content/turborepo -name "*.tsx" -o -name "*.ts" -o -name "*.json" | xargs rm -f 2>/dev/null || true
 nextjs_hash=$(clone "vercel/next.js" "docs" "nextjs")
 find content/nextjs -name "*.tsx" -o -name "*.ts" -o -name "*.json" | xargs rm -f 2>/dev/null || true
+tauri_hash=$(clone "tauri-apps/tauri-docs" "src/content/docs" "tauri")
+rm -rf content/tauri/es content/tauri/fr content/tauri/it content/tauri/ja content/tauri/ko content/tauri/zh-cn content/tauri/_it content/tauri/_fragments 2>/dev/null || true
+find content/tauri -name "*.tsx" -o -name "*.ts" -o -name "*.json" | xargs rm -f 2>/dev/null || true
 
 cat > public/hashes.json << EOF
 {
@@ -69,7 +73,8 @@ cat > public/hashes.json << EOF
   "workflow": "$workflow_hash",
   "octokit": "$octokit_hash",
   "turborepo": "$turborepo_hash",
-  "nextjs": "$nextjs_hash"
+  "nextjs": "$nextjs_hash",
+  "tauri": "$tauri_hash"
 }
 EOF
 

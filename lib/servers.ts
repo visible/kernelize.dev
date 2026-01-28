@@ -54,4 +54,10 @@ export const servers: Server[] = [
     description: "search and read next.js documentation",
     tools: ["search_nextjs_docs", "get_nextjs_doc", "list_nextjs_docs"],
   },
+  {
+    path: "/tauri/mcp",
+    name: "tauri",
+    description: "search and read tauri desktop app documentation",
+    tools: ["search_tauri_docs", "get_tauri_doc", "list_tauri_docs"],
+  },
 ];
