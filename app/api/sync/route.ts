@@ -1,18 +1,13 @@
 const repos = [
   { repo: "vercel/ai", path: "content", key: "ai" },
   { repo: "honojs/website", path: "docs", key: "hono" },
-  {
-    repo: "sveltejs/svelte.dev",
-    path: "apps/svelte.dev/content",
-    key: "svelte",
-  },
-  {
-    repo: "Effect-TS/website",
-    path: "content/src/content/docs",
-    key: "effect",
-  },
+  { repo: "sveltejs/svelte.dev", path: "apps/svelte.dev/content", key: "svelte" },
+  { repo: "Effect-TS/website", path: "content/src/content/docs", key: "effect" },
   { repo: "vercel/workflow", path: "docs/content", key: "workflow" },
   { repo: "octokit/octokit.js", path: "README.md", key: "octokit" },
+  { repo: "vercel/turborepo", path: "docs/site/content/docs", key: "turborepo" },
+  { repo: "vercel/next.js", path: "docs", key: "nextjs" },
+  { repo: "tauri-apps/tauri-docs", path: "src/content/docs", key: "tauri" },
 ];
 
 async function getlatestcommit(
