@@ -72,4 +72,10 @@ export const servers: Server[] = [
     description: "search and read expo framework documentation",
     tools: ["search_expo_docs", "get_expo_doc", "list_expo_docs"],
   },
+  {
+    path: "/betterauth/mcp",
+    name: "betterauth",
+    description: "search and read better auth documentation",
+    tools: ["search_betterauth_docs", "get_betterauth_doc", "list_betterauth_docs"],
+  },
 ];

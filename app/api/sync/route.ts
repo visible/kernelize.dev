@@ -10,6 +10,7 @@ const repos = [
   { repo: "tauri-apps/tauri-docs", path: "src/content/docs", key: "tauri" },
   { repo: "facebook/react-native-website", path: "docs", key: "reactnative" },
   { repo: "expo/expo", path: "docs/pages", key: "expo" },
+  { repo: "better-auth/better-auth", path: "docs/content/docs", key: "betterauth" },
 ];
 
 async function getlatestcommit(
