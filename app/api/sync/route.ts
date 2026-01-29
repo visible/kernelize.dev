@@ -11,6 +11,7 @@ const repos = [
   { repo: "facebook/react-native-website", path: "docs", key: "reactnative" },
   { repo: "expo/expo", path: "docs/pages", key: "expo" },
   { repo: "better-auth/better-auth", path: "docs/content/docs", key: "betterauth" },
+  { repo: "swiftlang/swift-org-website", path: "documentation", key: "swift" },
 ];
 
 async function getlatestcommit(
