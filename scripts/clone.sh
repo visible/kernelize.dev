@@ -13,6 +13,8 @@ octokit_hash=""
 turborepo_hash=""
 nextjs_hash=""
 tauri_hash=""
+reactnative_hash=""
+expo_hash=""
 
 clone() {
   local repo=$1
@@ -63,6 +65,11 @@ find content/nextjs -name "*.tsx" -o -name "*.ts" -o -name "*.json" | xargs rm -
 tauri_hash=$(clone "tauri-apps/tauri-docs" "src/content/docs" "tauri")
 rm -rf content/tauri/es content/tauri/fr content/tauri/it content/tauri/ja content/tauri/ko content/tauri/zh-cn content/tauri/_it content/tauri/_fragments 2>/dev/null || true
 find content/tauri -name "*.tsx" -o -name "*.ts" -o -name "*.json" | xargs rm -f 2>/dev/null || true
+reactnative_hash=$(clone "facebook/react-native-website" "docs" "reactnative")
+find content/reactnative -name "*.tsx" -o -name "*.ts" -o -name "*.jsx" -o -name "*.json" | xargs rm -f 2>/dev/null || true
+expo_hash=$(clone "expo/expo" "docs/pages" "expo")
+rm -rf content/expo/api 2>/dev/null || true
+find content/expo -name "*.tsx" -o -name "*.ts" -o -name "*.jsx" -o -name "*.json" | xargs rm -f 2>/dev/null || true
 
 cat > public/hashes.json << EOF
 {
@@ -74,7 +81,9 @@ cat > public/hashes.json << EOF
   "octokit": "$octokit_hash",
   "turborepo": "$turborepo_hash",
   "nextjs": "$nextjs_hash",
-  "tauri": "$tauri_hash"
+  "tauri": "$tauri_hash",
+  "reactnative": "$reactnative_hash",
+  "expo": "$expo_hash"
 }
 EOF
 

@@ -60,4 +60,16 @@ export const servers: Server[] = [
     description: "search and read tauri desktop app documentation",
     tools: ["search_tauri_docs", "get_tauri_doc", "list_tauri_docs"],
   },
+  {
+    path: "/reactnative/mcp",
+    name: "reactnative",
+    description: "search and read react native documentation",
+    tools: ["search_reactnative_docs", "get_reactnative_doc", "list_reactnative_docs"],
+  },
+  {
+    path: "/expo/mcp",
+    name: "expo",
+    description: "search and read expo framework documentation",
+    tools: ["search_expo_docs", "get_expo_doc", "list_expo_docs"],
+  },
 ];
