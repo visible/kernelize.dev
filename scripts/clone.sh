@@ -15,6 +15,7 @@ nextjs_hash=""
 tauri_hash=""
 reactnative_hash=""
 expo_hash=""
+betterauth_hash=""
 
 clone() {
   local repo=$1
@@ -70,6 +71,8 @@ find content/reactnative -name "*.tsx" -o -name "*.ts" -o -name "*.jsx" -o -name
 expo_hash=$(clone "expo/expo" "docs/pages" "expo")
 rm -rf content/expo/api 2>/dev/null || true
 find content/expo -name "*.tsx" -o -name "*.ts" -o -name "*.jsx" -o -name "*.json" | xargs rm -f 2>/dev/null || true
+betterauth_hash=$(clone "better-auth/better-auth" "docs/content/docs" "betterauth")
+find content/betterauth -name "*.tsx" -o -name "*.ts" -o -name "*.jsx" -o -name "*.json" | xargs rm -f 2>/dev/null || true
 
 cat > public/hashes.json << EOF
 {
@@ -83,7 +86,8 @@ cat > public/hashes.json << EOF
   "nextjs": "$nextjs_hash",
   "tauri": "$tauri_hash",
   "reactnative": "$reactnative_hash",
-  "expo": "$expo_hash"
+  "expo": "$expo_hash",
+  "betterauth": "$betterauth_hash"
 }
 EOF
 
