@@ -8,6 +8,8 @@ const repos = [
   { repo: "vercel/turborepo", path: "docs/site/content/docs", key: "turborepo" },
   { repo: "vercel/next.js", path: "docs", key: "nextjs" },
   { repo: "tauri-apps/tauri-docs", path: "src/content/docs", key: "tauri" },
+  { repo: "facebook/react-native-website", path: "docs", key: "reactnative" },
+  { repo: "expo/expo", path: "docs/pages", key: "expo" },
 ];
 
 async function getlatestcommit(
