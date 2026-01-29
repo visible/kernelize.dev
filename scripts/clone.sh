@@ -16,6 +16,7 @@ tauri_hash=""
 reactnative_hash=""
 expo_hash=""
 betterauth_hash=""
+swift_hash=""
 
 clone() {
   local repo=$1
@@ -73,6 +74,7 @@ rm -rf content/expo/api 2>/dev/null || true
 find content/expo -name "*.tsx" -o -name "*.ts" -o -name "*.jsx" -o -name "*.json" | xargs rm -f 2>/dev/null || true
 betterauth_hash=$(clone "better-auth/better-auth" "docs/content/docs" "betterauth")
 find content/betterauth -name "*.tsx" -o -name "*.ts" -o -name "*.jsx" -o -name "*.json" | xargs rm -f 2>/dev/null || true
+swift_hash=$(clone "swiftlang/swift-org-website" "documentation" "swift")
 
 cat > public/hashes.json << EOF
 {
@@ -87,7 +89,8 @@ cat > public/hashes.json << EOF
   "tauri": "$tauri_hash",
   "reactnative": "$reactnative_hash",
   "expo": "$expo_hash",
-  "betterauth": "$betterauth_hash"
+  "betterauth": "$betterauth_hash",
+  "swift": "$swift_hash"
 }
 EOF
 

@@ -78,4 +78,10 @@ export const servers: Server[] = [
     description: "search and read better auth documentation",
     tools: ["search_betterauth_docs", "get_betterauth_doc", "list_betterauth_docs"],
   },
+  {
+    path: "/swift/mcp",
+    name: "swift",
+    description: "search and read swift programming language documentation",
+    tools: ["search_swift_docs", "get_swift_doc", "list_swift_docs"],
+  },
 ];
