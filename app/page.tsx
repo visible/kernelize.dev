@@ -80,6 +80,12 @@ export default function Home() {
           </div>
           <div>
             <p className="mb-3 text-[10px] uppercase tracking-[0.15em] text-neutral-400">
+              Codex
+            </p>
+            <Codeblock>codex mcp add kernelize --url https://kernelize.dev/mcp</Codeblock>
+          </div>
+          <div>
+            <p className="mb-3 text-[10px] uppercase tracking-[0.15em] text-neutral-400">
               Opencode
             </p>
             <Codeblock>{`{

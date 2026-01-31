@@ -89,6 +89,8 @@ export function mcppage(config: PageConfig): string {
 
   const claudeCommand = `claude mcp add -t http ${config.name} https://kernelize.dev${config.path}`;
 
+  const codexCommand = `codex mcp add ${config.name} --url https://kernelize.dev${config.path}`;
+
   const opencodeConfig = `{
   "mcpServers": {
     "${config.name}": {
@@ -139,6 +141,9 @@ export function mcppage(config: PageConfig): string {
 
       <p class="label">Claude Code</p>
       ${codeblock(claudeCommand)}
+
+      <p class="label">Codex</p>
+      ${codeblock(codexCommand)}
 
       <p class="label">Opencode</p>
       ${codeblock(opencodeConfig)}
