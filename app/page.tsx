@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { servers } from "@/lib/servers";
 import { Codeblock } from "@/components/codeblock";
+import { servers } from "@/lib/servers";
 
 export default function Home() {
   return (
@@ -76,13 +76,17 @@ export default function Home() {
             <p className="mb-3 text-[10px] uppercase tracking-[0.15em] text-neutral-400">
               Claude Code
             </p>
-            <Codeblock>claude mcp add -t http kernelize https://kernelize.dev/mcp</Codeblock>
+            <Codeblock>
+              claude mcp add -t http kernelize https://kernelize.dev/mcp
+            </Codeblock>
           </div>
           <div>
             <p className="mb-3 text-[10px] uppercase tracking-[0.15em] text-neutral-400">
               Codex
             </p>
-            <Codeblock>codex mcp add kernelize --url https://kernelize.dev/mcp</Codeblock>
+            <Codeblock>
+              codex mcp add kernelize --url https://kernelize.dev/mcp
+            </Codeblock>
           </div>
           <div>
             <p className="mb-3 text-[10px] uppercase tracking-[0.15em] text-neutral-400">
