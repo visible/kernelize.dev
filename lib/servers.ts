@@ -188,4 +188,10 @@ export const servers: Server[] = [
       "list_perplexity_docs",
     ],
   },
+  {
+    path: "/xai/mcp",
+    name: "xai",
+    description: "search and read xai grok api documentation",
+    tools: ["search_xai_docs", "get_xai_doc", "list_xai_docs"],
+  },
 ];

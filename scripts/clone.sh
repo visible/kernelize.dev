@@ -29,6 +29,7 @@ mistral_hash=""
 cohere_hash=""
 elevenlabs_hash=""
 perplexity_hash=""
+xai_hash=""
 
 clone() {
   local repo=$1
@@ -150,6 +151,13 @@ clonecohere() {
   echo "$hash"
 }
 
+clonexai() {
+  mkdir -p content/xai
+  curl -sL "https://docs.x.ai/llms.txt" > "content/xai/docs.md"
+  local hash=$(date +%Y%m%d)
+  echo "$hash"
+}
+
 ai_hash=$(clone "vercel/ai" "content" "ai")
 hono_hash=$(clone "honojs/website" "docs" "hono")
 svelte_hash=$(clone "sveltejs/svelte.dev" "apps/svelte.dev/content" "svelte")
@@ -183,6 +191,7 @@ mistral_hash=$(clonemistral)
 cohere_hash=$(clonecohere)
 elevenlabs_hash=$(cloneelevenlabs)
 perplexity_hash=$(cloneperplexity)
+xai_hash=$(clonexai)
 
 cat > public/hashes.json << EOF
 {
@@ -210,7 +219,8 @@ cat > public/hashes.json << EOF
   "mistral": "$mistral_hash",
   "cohere": "$cohere_hash",
   "elevenlabs": "$elevenlabs_hash",
-  "perplexity": "$perplexity_hash"
+  "perplexity": "$perplexity_hash",
+  "xai": "$xai_hash"
 }
 EOF
 
