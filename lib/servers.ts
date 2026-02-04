@@ -194,4 +194,26 @@ export const servers: Server[] = [
     description: "search and read xai grok api documentation",
     tools: ["search_xai_docs", "get_xai_doc", "list_xai_docs"],
   },
+  {
+    path: "/assemblyai/mcp",
+    name: "assemblyai",
+    description: "search and read assemblyai api documentation",
+    tools: [
+      "search_assemblyai_docs",
+      "get_assemblyai_doc",
+      "list_assemblyai_docs",
+    ],
+  },
+  {
+    path: "/deepgram/mcp",
+    name: "deepgram",
+    description: "search and read deepgram api documentation",
+    tools: ["search_deepgram_docs", "get_deepgram_doc", "list_deepgram_docs"],
+  },
+  {
+    path: "/deepseek/mcp",
+    name: "deepseek",
+    description: "search and read deepseek api documentation",
+    tools: ["search_deepseek_docs", "get_deepseek_doc", "list_deepseek_docs"],
+  },
 ];
