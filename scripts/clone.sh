@@ -30,6 +30,9 @@ cohere_hash=""
 elevenlabs_hash=""
 perplexity_hash=""
 xai_hash=""
+assemblyai_hash=""
+deepgram_hash=""
+deepseek_hash=""
 
 clone() {
   local repo=$1
@@ -158,6 +161,32 @@ clonexai() {
   echo "$hash"
 }
 
+cloneassemblyai() {
+  mkdir -p content/assemblyai
+  curl -sL "https://raw.githubusercontent.com/AssemblyAI/assemblyai-api-spec/main/openapi.yml" > "content/assemblyai/openapi.yml"
+  local hash=$(curl -s "https://api.github.com/repos/AssemblyAI/assemblyai-api-spec/commits?per_page=1" | grep -o '"sha": "[^"]*"' | head -1 | cut -d'"' -f4)
+  echo "$hash"
+}
+
+clonedeepgram() {
+  mkdir -p content/deepgram
+  curl -sL "https://raw.githubusercontent.com/deepgram/deepgram-api-specs/main/openapi.yml" > "content/deepgram/openapi.yml"
+  curl -sL "https://raw.githubusercontent.com/deepgram/deepgram-api-specs/main/asyncapi.yml" >> "content/deepgram/asyncapi.yml"
+  local hash=$(curl -s "https://api.github.com/repos/deepgram/deepgram-api-specs/commits?per_page=1" | grep -o '"sha": "[^"]*"' | head -1 | cut -d'"' -f4)
+  echo "$hash"
+}
+
+clonedeepseek() {
+  mkdir -p content/deepseek
+  echo "# DeepSeek API Documentation" > "content/deepseek/docs.md"
+  for page in quick_start api/deepseek-api api/create-chat-completion api/create-completion api/list-models api/get-user-balance guides/reasoning_model guides/multi_turn guides/fim_completion guides/json_mode guides/function_calling guides/prefix_caching news/news1226 news/news0120 news/news0320; do
+    echo -e "\n\n---\n# $page\n" >> "content/deepseek/docs.md"
+    curl -sL "https://api-docs.deepseek.com/$page" | sed -n 's/.*<article[^>]*>\(.*\)<\/article>.*/\1/p' | sed 's/<[^>]*>//g' >> "content/deepseek/docs.md" 2>/dev/null || true
+  done
+  local hash=$(date +%Y%m%d)
+  echo "$hash"
+}
+
 ai_hash=$(clone "vercel/ai" "content" "ai")
 hono_hash=$(clone "honojs/website" "docs" "hono")
 svelte_hash=$(clone "sveltejs/svelte.dev" "apps/svelte.dev/content" "svelte")
@@ -192,6 +221,9 @@ cohere_hash=$(clonecohere)
 elevenlabs_hash=$(cloneelevenlabs)
 perplexity_hash=$(cloneperplexity)
 xai_hash=$(clonexai)
+assemblyai_hash=$(cloneassemblyai)
+deepgram_hash=$(clonedeepgram)
+deepseek_hash=$(clonedeepseek)
 
 cat > public/hashes.json << EOF
 {
@@ -220,7 +252,10 @@ cat > public/hashes.json << EOF
   "cohere": "$cohere_hash",
   "elevenlabs": "$elevenlabs_hash",
   "perplexity": "$perplexity_hash",
-  "xai": "$xai_hash"
+  "xai": "$xai_hash",
+  "assemblyai": "$assemblyai_hash",
+  "deepgram": "$deepgram_hash",
+  "deepseek": "$deepseek_hash"
 }
 EOF
 
