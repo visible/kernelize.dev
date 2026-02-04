@@ -1,31 +1,24 @@
 import { createcontent } from "@/lib/content";
 import { createmcp } from "@/lib/mcp";
 
-const content = createcontent("turborepo");
+const content = createcontent("mistral");
 
 const { handler, page } = createmcp({
-  name: "turborepo",
-  title: "turborepo",
-  description: "Turborepo documentation",
-  basePath: "/turborepo/mcp",
-  sections: [
-    "core-concepts",
-    "crafting-your-repository",
-    "getting-started",
-    "guides",
-    "messages",
-    "reference",
-  ],
+  name: "mistral",
+  title: "mistral",
+  description: "Mistral AI documentation",
+  basePath: "/mistral/mcp",
+  sections: ["docs"],
   searchDocs: content.searchDocs,
   getDoc: content.getDoc,
   listDocs: content.listDocs,
   tools: [
     {
-      name: "search_turborepo_docs",
+      name: "search_mistral_docs",
       description: "search documentation by keyword",
     },
-    { name: "get_turborepo_doc", description: "get full content of a page" },
-    { name: "list_turborepo_docs", description: "list available pages" },
+    { name: "get_mistral_doc", description: "get full content of a page" },
+    { name: "list_mistral_docs", description: "list available pages" },
   ],
 });
 

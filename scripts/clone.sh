@@ -17,6 +17,19 @@ reactnative_hash=""
 expo_hash=""
 betterauth_hash=""
 swift_hash=""
+openai_hash=""
+anthropic_hash=""
+together_hash=""
+fireworks_hash=""
+groq_hash=""
+cerebras_hash=""
+fal_hash=""
+replicate_hash=""
+mistral_hash=""
+cohere_hash=""
+elevenlabs_hash=""
+perplexity_hash=""
+xai_hash=""
 
 clone() {
   local repo=$1
@@ -54,6 +67,97 @@ cloneoctokit() {
   echo "$hash"
 }
 
+cloneopenai() {
+  mkdir -p content/openai
+  curl -sL "https://platform.openai.com/docs/llms-full.txt" > "content/openai/docs.md"
+  local hash=$(date +%Y%m%d)
+  echo "$hash"
+}
+
+cloneanthropic() {
+  mkdir -p content/anthropic
+  curl -sL "https://docs.anthropic.com/llms-full.txt" > "content/anthropic/docs.md"
+  local hash=$(date +%Y%m%d)
+  echo "$hash"
+}
+
+clonetogether() {
+  mkdir -p content/together
+  curl -sL "https://docs.together.ai/llms-full.txt" > "content/together/docs.md"
+  local hash=$(date +%Y%m%d)
+  echo "$hash"
+}
+
+clonefireworks() {
+  mkdir -p content/fireworks
+  curl -sL "https://docs.fireworks.ai/llms-full.txt" > "content/fireworks/docs.md"
+  local hash=$(date +%Y%m%d)
+  echo "$hash"
+}
+
+clonegroq() {
+  mkdir -p content/groq
+  curl -sL "https://console.groq.com/docs/llms-full.txt" > "content/groq/docs.md"
+  local hash=$(date +%Y%m%d)
+  echo "$hash"
+}
+
+clonecerebras() {
+  mkdir -p content/cerebras
+  curl -sL "https://inference-docs.cerebras.ai/llms-full.txt" > "content/cerebras/docs.md"
+  local hash=$(date +%Y%m%d)
+  echo "$hash"
+}
+
+clonefal() {
+  mkdir -p content/fal
+  curl -sL "https://docs.fal.ai/llms-full.txt" > "content/fal/docs.md"
+  local hash=$(date +%Y%m%d)
+  echo "$hash"
+}
+
+clonereplicate() {
+  mkdir -p content/replicate
+  curl -sL "https://replicate.com/docs/llms.txt" > "content/replicate/docs.md"
+  local hash=$(date +%Y%m%d)
+  echo "$hash"
+}
+
+cloneelevenlabs() {
+  mkdir -p content/elevenlabs
+  curl -sL "https://elevenlabs.io/docs/llms-full.txt" > "content/elevenlabs/docs.md"
+  local hash=$(date +%Y%m%d)
+  echo "$hash"
+}
+
+cloneperplexity() {
+  mkdir -p content/perplexity
+  curl -sL "https://docs.perplexity.ai/llms-full.txt" > "content/perplexity/docs.md"
+  local hash=$(date +%Y%m%d)
+  echo "$hash"
+}
+
+clonemistral() {
+  mkdir -p content/mistral
+  curl -sL "https://docs.mistral.ai/llms-full.txt" > "content/mistral/docs.md"
+  local hash=$(date +%Y%m%d)
+  echo "$hash"
+}
+
+clonecohere() {
+  mkdir -p content/cohere
+  curl -sL "https://docs.cohere.com/llms-full.txt" > "content/cohere/docs.md"
+  local hash=$(date +%Y%m%d)
+  echo "$hash"
+}
+
+clonexai() {
+  mkdir -p content/xai
+  curl -sL "https://docs.x.ai/llms.txt" > "content/xai/docs.md"
+  local hash=$(date +%Y%m%d)
+  echo "$hash"
+}
+
 ai_hash=$(clone "vercel/ai" "content" "ai")
 hono_hash=$(clone "honojs/website" "docs" "hono")
 svelte_hash=$(clone "sveltejs/svelte.dev" "apps/svelte.dev/content" "svelte")
@@ -75,6 +179,19 @@ find content/expo -name "*.tsx" -o -name "*.ts" -o -name "*.jsx" -o -name "*.jso
 betterauth_hash=$(clone "better-auth/better-auth" "docs/content/docs" "betterauth")
 find content/betterauth -name "*.tsx" -o -name "*.ts" -o -name "*.jsx" -o -name "*.json" | xargs rm -f 2>/dev/null || true
 swift_hash=$(clone "swiftlang/swift-org-website" "documentation" "swift")
+openai_hash=$(cloneopenai)
+anthropic_hash=$(cloneanthropic)
+together_hash=$(clonetogether)
+fireworks_hash=$(clonefireworks)
+groq_hash=$(clonegroq)
+cerebras_hash=$(clonecerebras)
+fal_hash=$(clonefal)
+replicate_hash=$(clonereplicate)
+mistral_hash=$(clonemistral)
+cohere_hash=$(clonecohere)
+elevenlabs_hash=$(cloneelevenlabs)
+perplexity_hash=$(cloneperplexity)
+xai_hash=$(clonexai)
 
 cat > public/hashes.json << EOF
 {
@@ -90,7 +207,20 @@ cat > public/hashes.json << EOF
   "reactnative": "$reactnative_hash",
   "expo": "$expo_hash",
   "betterauth": "$betterauth_hash",
-  "swift": "$swift_hash"
+  "swift": "$swift_hash",
+  "openai": "$openai_hash",
+  "anthropic": "$anthropic_hash",
+  "together": "$together_hash",
+  "fireworks": "$fireworks_hash",
+  "groq": "$groq_hash",
+  "cerebras": "$cerebras_hash",
+  "fal": "$fal_hash",
+  "replicate": "$replicate_hash",
+  "mistral": "$mistral_hash",
+  "cohere": "$cohere_hash",
+  "elevenlabs": "$elevenlabs_hash",
+  "perplexity": "$perplexity_hash",
+  "xai": "$xai_hash"
 }
 EOF
 

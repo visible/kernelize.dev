@@ -1,31 +1,24 @@
 import { createcontent } from "@/lib/content";
 import { createmcp } from "@/lib/mcp";
 
-const content = createcontent("turborepo");
+const content = createcontent("openai");
 
 const { handler, page } = createmcp({
-  name: "turborepo",
-  title: "turborepo",
-  description: "Turborepo documentation",
-  basePath: "/turborepo/mcp",
-  sections: [
-    "core-concepts",
-    "crafting-your-repository",
-    "getting-started",
-    "guides",
-    "messages",
-    "reference",
-  ],
+  name: "openai",
+  title: "openai",
+  description: "OpenAI API documentation",
+  basePath: "/openai/mcp",
+  sections: ["docs"],
   searchDocs: content.searchDocs,
   getDoc: content.getDoc,
   listDocs: content.listDocs,
   tools: [
     {
-      name: "search_turborepo_docs",
+      name: "search_openai_docs",
       description: "search documentation by keyword",
     },
-    { name: "get_turborepo_doc", description: "get full content of a page" },
-    { name: "list_turborepo_docs", description: "list available pages" },
+    { name: "get_openai_doc", description: "get full content of a page" },
+    { name: "list_openai_docs", description: "list available pages" },
   ],
 });
 
